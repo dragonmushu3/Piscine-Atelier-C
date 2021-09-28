@@ -14,15 +14,3 @@ void my_strlowcase(char *str)
 
 
 
-
-int main(void)
-{
-    char bob[] = "BoBsIes";
-    char george[] = "GeoRgIes";
-    my_strlowcase(bob);
-    my_strlowcase(george);
-    puts(bob);
-    puts(george);
-
-    return 0;
-}
