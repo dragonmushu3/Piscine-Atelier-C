@@ -7,21 +7,19 @@
 
 unsigned int digit(int n, int k)
 {
-    unsigned int res = 1;
+    if (n <= 0 || k <= 0)
+        return 0;
+    unsigned int quotient = 1;
     for (int i = 1; i <= k; i++)
-        res *= 10;
-    printf("%u\n",res);
-    unsigned int billi_bob = n % res;
-    unsigned int baby = n % (res / 10);
-    unsigned int damn = billi_bob - baby;
-    return (damn / res);
+        quotient *= 10;
+    if (k >=2 )
+    {
+        unsigned int number1 = n % quotient;
+        unsigned int number2 = n % (quotient / 10);
+        return (number1 - number2) / (quotient / 10);
+    }
+    return n % quotient;
 }
 
 
 
-
-int main(void)
-{
-    printf("%u\n",digit(568,1));
-    return 0;
-}
