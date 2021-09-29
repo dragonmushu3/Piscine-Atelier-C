@@ -4,12 +4,8 @@ void my_strlowcase(char *str)
 {
     while (*str != '\0')
     {
-        if ( *str <= 'Z' && *str >= 'A')
-            *str = *str + ('a'-'A');
+        if (*str <= 'Z' && *str >= 'A')
+            *str = *str + ('a' - 'A');
         str++;
     }
 }
-
-
-
-
