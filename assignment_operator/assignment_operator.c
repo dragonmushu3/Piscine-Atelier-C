@@ -1,13 +1,13 @@
 #include <stddef.h>
 
-void plus_equal(int *a, int*b)
+void plus_equal(int *a, int *b)
 {
     if ((!a) || (!b))
         return;
     *a = *a + *b;
 }
 
-void minus_equal(int *a, int*b)
+void minus_equal(int *a, int *b)
 {
     if ((!a) || (!b))
         return;
@@ -21,7 +21,7 @@ void mult_equal(int *a, int *b)
     *a = *a * *b;
 }
 
-int div_equal(int *a, int*b)
+int div_equal(int *a, int *b)
 {
     if ((!a) || (!b) || (*b == 0))
         return 0;
@@ -29,5 +29,3 @@ int div_equal(int *a, int*b)
     *a = *a / *b;
     return res;
 }
-
-
