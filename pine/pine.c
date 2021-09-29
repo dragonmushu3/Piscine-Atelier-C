@@ -1,9 +1,4 @@
-
 #include <stdio.h>
-
-
-
-
 
 int pine(unsigned n)
 {
@@ -11,17 +6,17 @@ int pine(unsigned n)
     {
         return 1;
     }
-    for (unsigned i = 1; i <= n ; i++)
+    for (unsigned i = 1; i <= n; i++)
     {
         for (unsigned k = 1; k <= (n - i); k++)
         {
             putchar(32);
         }
-        for (unsigned j = 1; j <= (2 * i)-1; j++)
+        for (unsigned j = 1; j <= (2 * i) - 1; j++)
         {
             putchar('*');
         }
-        puts("");
+        putchar('\n');
     }
     for (unsigned l = 1; l <= (n / 2); l++)
     {
@@ -30,10 +25,7 @@ int pine(unsigned n)
             putchar(32);
         }
         putchar('*');
-        puts("");
+        putchar('\n');
     }
     return 0;
 }
-
-
-
