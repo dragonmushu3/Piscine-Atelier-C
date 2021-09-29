@@ -5,5 +5,3 @@ int my_abs(int n)
 {
     return abs(n);
 }
-
-
