@@ -1,5 +1,3 @@
-#include <stdio.h>
-//tried to emulate "round 1/2 to nearest even number" for .5 cases
 int my_round(float n)
 {
     int lower_int = n;
@@ -39,16 +37,3 @@ int my_round(float n)
             return lower_int - 1;
     }
 }
-
-
-
-
-
-
-/*
-**int main(void)
-**{
-**    printf("%d\n",my_round(104.5));
-**    return 0;
-**}
-*/
