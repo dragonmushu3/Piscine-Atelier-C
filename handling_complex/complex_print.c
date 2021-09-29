@@ -1,5 +1,6 @@
 #include <stddef.h>
 #include <stdio.h>
+#include "complex.h"
 
 void print_complex(struct complex a)
 {
