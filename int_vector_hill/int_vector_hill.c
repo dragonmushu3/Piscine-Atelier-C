@@ -1,10 +1,9 @@
 #include "int_vector_hill.h"
+
 #include <stddef.h>
 
 int int_vector_hill(struct int_vector vec)
 {
-    if (!vec.data)
-        return - 1;
     size_t i = 1;
     int res = 0;
     if (vec.size == 1)
@@ -22,6 +21,6 @@ int int_vector_hill(struct int_vector vec)
     size_t billy = i - 1;
     size_t bob = vec.size - 1;
     if (!(bob == billy))
-        return - 1;
+        return -1;
     return res;
 }
