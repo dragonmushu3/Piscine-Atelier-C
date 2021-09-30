@@ -1,10 +1,9 @@
 #include <stddef.h>
 #include <stdio.h>
-#include <stdlib.h>
 
 void sieve(int n)
 {
-    int *arr = calloc(n, sizeof(int));
+    static int arr[1000] = {0};
     for (int i = 2; i < n; i++)
     {
         if (arr[i] == 0)
