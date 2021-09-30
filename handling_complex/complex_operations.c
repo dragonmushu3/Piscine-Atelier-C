@@ -1,4 +1,5 @@
 #include <stddef.h>
+
 #include "complex.h"
 
 struct complex neg_complex(struct complex a)
@@ -10,13 +11,17 @@ struct complex neg_complex(struct complex a)
 
 struct complex add_complex(struct complex a, struct complex b)
 {
-    struct complex c =
-    {
-        .real = 0,
-        .img = 0
-    };
+    struct complex c;
     c.real = a.real + b.real;
     c.img = a.img + b.img;
+    return c;
+}
+
+struct complex sub_complex(struct complex a, struct complex b)
+{
+    struct complex c;
+    c.real = a.real - b.real;
+    c.img = a.img - b.img;
     return c;
 }
 
