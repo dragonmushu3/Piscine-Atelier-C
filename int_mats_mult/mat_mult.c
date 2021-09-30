@@ -1,4 +1,5 @@
 #include <stddef.h>
+
 #include "mat_mult.h"
 
 void mat_mult(int **mat1, int **mat2, size_t *matrices_size, int **out)
