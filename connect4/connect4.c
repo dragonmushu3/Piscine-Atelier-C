@@ -124,9 +124,3 @@ int connect4(char *game[], size_t columns, size_t lines)
     }
     return s.k;
 }
-
-
-int main(void)
-{
-    return 0;
-}
