@@ -22,5 +22,5 @@ void sieve(int n)
             p++;
     }
     free(arr);
-    printf("%zu\n",p);
+    printf("%zu\n", p);
 }
