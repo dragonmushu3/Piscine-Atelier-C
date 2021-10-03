@@ -3,7 +3,11 @@
 
 void sieve(int n)
 {
-    static int arr[1000] = {0};
+    static int arr[1000] =
+    {
+        0
+    };
+
     for (int i = 2; i < n; i++)
     {
         if (arr[i] == 0)
@@ -12,9 +16,9 @@ void sieve(int n)
                 arr[u] = 1;
         }
     }
-    for (int i = 2; i < n; i++)
+    for (int i = 2; i <= n; i++)
     {
         if (arr[i] == 0)
-            printf("%d\n",i);
+            printf("%d\n", i);
     }
 }
