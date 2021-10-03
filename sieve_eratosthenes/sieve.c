@@ -3,10 +3,7 @@
 
 void sieve(int n)
 {
-    static int arr[1000] =
-    {
-        0
-    };
+    static int arr[1000] = { 0 };
 
     for (int i = 2; i < n; i++)
     {
