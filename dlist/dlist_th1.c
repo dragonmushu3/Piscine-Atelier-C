@@ -1,4 +1,5 @@
 #include <stdlib.h>
+
 #include <stdio.h>
 
 #include "dlist.h"
@@ -45,7 +46,7 @@ void rec_print_itemht(const struct dlist_item *item)
         return;
     else
     {
-        printf("%d",item->data);
+        printf("%d", item->data);
         rec_print_itemht(item->prev);
     }
 }

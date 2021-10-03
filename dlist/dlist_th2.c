@@ -63,7 +63,7 @@ int dlist_insert_at(struct dlist *list, int element, size_t index)
         if (index > 0)
         {
             struct dlist_item *ptr_index = rec_get_item(list->tail, index);
-            struct dlist_item *ptr_size = rec_get_item(list->tail, index - 1); 
+            struct dlist_item *ptr_size = rec_get_item(list->tail, index - 1);
             struct dlist_item *new = malloc(sizeof(struct dlist_item));
             if (!new)
                 return -1;
