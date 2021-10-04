@@ -1,0 +1,12 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -pedantic -std=c99
+LIBFLAG = -lcriterion
+
+check: testsuite
+	./testsuite
+
+testsuite: bst.o testsuite.o
+	$(CC) $^ -o testsuite $(LIBFLAG)
+
+clean:
+	rm *.o testsuite
