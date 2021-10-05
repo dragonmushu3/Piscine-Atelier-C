@@ -7,7 +7,7 @@ int int_vector_hill(struct int_vector vec)
     size_t i = 1;
     int res = 0;
     if (vec.size == 1 && vec.data[0] >= 0)
-        return vec.data[0];
+        return 0;
     for (size_t i = 0; i < vec.size; i++)
     {
         if (vec.data[i] < 0)
