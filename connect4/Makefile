@@ -13,4 +13,4 @@ test: connect4.o testsuite.o
 	$(CC) -lcriterion -o $@ $^
 
 clean: 
-	$(RM) *.o test 
+	$(RM) *.o test con4
