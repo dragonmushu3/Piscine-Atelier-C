@@ -1,5 +1,4 @@
 #include <stdlib.h>
-
 #include <stdio.h>
 
 #include "dlist.h"
@@ -28,6 +27,7 @@ int dlist_push_front(struct dlist *list, int element)
     {
         list->tail = item;
         list->size += 1;
+        list->head = item;
         return 1;
     }
 
@@ -69,6 +69,7 @@ int dlist_push_back(struct dlist *list, int element)
     {
         list->head = item;
         list->size += 1;
+        list->tail = item;
         return 1;
     }
 
@@ -83,5 +84,7 @@ int dlist_push_back(struct dlist *list, int element)
 
 size_t dlist_size(const struct dlist *list)
 {
+    if (!list)
+        return 0;
     return list->size;
 }
