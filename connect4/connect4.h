@@ -3,8 +3,28 @@
 
 #include <stddef.h>
 
-void ch_dir( int x, int y, struct pt *c);
-int check_dir(struct stat *g, struct pt c, struct w_pair p, char *game[]);
+struct pt
+{
+    size_t x;
+    size_t y;
+    int x_d;
+    int y_d;
+};
+
+struct stat
+{
+    size_t lines;
+    size_t columns;
+    int k;
+    int fail;
+};
+
+struct w_pair
+{
+    int win1;
+    int win2;
+};
+
 int connect4(char *game[], size_t columns, size_t lines);
 
 #endif /* !CONNECT4_H */

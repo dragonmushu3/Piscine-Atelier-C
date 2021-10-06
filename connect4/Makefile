@@ -3,8 +3,8 @@ CFLAGS=-std=c99 -Wall -Wextra -Werror -pedantic
 CDBG=-g -fsanitize=address
 CT=-lcriterion
 
-con4: connect4.c
-	$(CC) $(CFLAGS) $(CDBG) -o con4 connect4.c $(CT)
+con4: connect4.c main.c
+	$(CC) $(CFLAGS) $(CDBG) -o con4 connect4.c main.c $(CT)
 
 check: test
 	./test
