@@ -1,5 +1,4 @@
 #include <stddef.h>
-#include <stdio.h>
 
 struct stat
 {
@@ -16,22 +15,7 @@ struct pt
     int y_d;
 };
 
-void print_map(char **map, struct stat *m)
-{
-    size_t a = m->lines;
-    size_t c = m->columns;
-    for (size_t i = 0; i < a; i++)
-    {
-        for (size_t j = 0; j < c; j++)
-        {
-            printf("%c ",map[i][j]);
-        }
-        putchar('\n');
-    }
-    putchar('\n');
-}
-
-void ch_coords_append( int x, int y, struct pt *c)
+void ch_coords_append(int x, int y, struct pt *c)
 {
     c->x += x;
     c->y += y;
@@ -66,15 +50,10 @@ void check_dir(struct stat *m, struct pt c, char **map)
             fill_lake(c, map, m);
             m->no_lakes += 1;
         }
-        else
-        {
-            c.x += c.x_d;
-            c.y += c.y_d;
-            check_dir(m, c, map);
-        }
+        c.x += c.x_d;
+        c.y += c.y_d;
+        check_dir(m, c, map);
     }
-    else
-        return;
 }
 
 void traverse_lines(struct stat *m, char **map)
@@ -100,5 +79,6 @@ int lakes(char **map, int width, int height)
     m.columns = width;
 
     traverse_lines(&m, map);
-    return m.no_lakes;
+    int res = m.no_lakes;
+    return res;
 }
