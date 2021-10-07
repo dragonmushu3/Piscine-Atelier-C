@@ -5,7 +5,7 @@ check: testsuite
 	./testsuite
 
 debug: deb_levenshtein.o deb_main.o
-	$(CC) -g deb_levenshtein.o deb_main.o -o $@
+	$(CC) -g -fsanitize=address deb_levenshtein.o deb_main.o -o $@
 	gdb debug
 
 deb_main.o:
@@ -15,7 +15,7 @@ deb_levenshtein.o:
 	$(CC) $(CFLAGS) -g -c levenshtein.c -o $@
 
 testsuite: testsuite.o levenshtein.o
-	$(CC) *.o -lcriterion -o $@
+	$(CC) *.o -lcriterion -fsanitize=address -o $@
 
 clean: 
 	$(RM) *.o testsuite debug

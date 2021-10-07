@@ -20,7 +20,7 @@ size_t count_diff_str(const char *lev, const char *s_big, size_t len)
     return res;
 }
 
-char *my_strcpy(const char *s,size_t len)
+char *my_strcpy(const char *s, size_t len)
 {
     char *res = malloc(sizeof(char) * (len + 1));
     for (size_t i = 0; i < len; i++)
@@ -31,25 +31,37 @@ char *my_strcpy(const char *s,size_t len)
     return res;
 }
 
-char *strcpy_no_spaces(const char *s, size_t *len, size_t *spaces)
+size_t count_spaces(const char *s, size_t *len)
 {
     size_t t_spaces = 0;
-    size_t j = 0;
-    char *res = malloc(sizeof(char) * (*len + 1));
     for (size_t i = 0; i < *len; i++)
     {
         if (s[i] == 32)
             t_spaces += 1;
+    }
+    return t_spaces;
+}
+
+char *strcpy_no_spaces(const char *s, size_t *len, size_t *spaces)
+{
+    size_t j = 0;
+    size_t nb_spaces = count_spaces(s, len);
+    char *res = malloc(sizeof(char) * (*len - nb_spaces + 1));
+
+    for (size_t i = 0; i < *len; i++)
+    {
+        if (s[i] == 32)
+            continue;
         else
         {
             res[j] = s[i];
             j++;
         }
     }
-    res = realloc(res, (*len + 1) - t_spaces);
-    res[(*len + 1) - t_spaces] = '\0';
-    *spaces += t_spaces;
-    *len -= t_spaces;
+
+    res[(*len - nb_spaces)] = '\0';
+    *spaces += nb_spaces;
+    *len -= nb_spaces;
     return res;
 }
 
