@@ -22,7 +22,9 @@ size_t my_pow(size_t a, size_t n)
 {
     if (n == 0)
         return 1;
-    for (size_t i = 0; i < n; i++)
+    if (n == 1)
+        return a;
+    for (size_t i = 1; i < n; i++)
     {
         a *= a;
     }
@@ -32,12 +34,14 @@ size_t my_pow(size_t a, size_t n)
 void add(struct bst *tree, int value)
 {
     size_t needed_capacity = 0;
-    for (size_t j = 0; j < tree->size; j++)
-        needed_capacity += my_pow(2, j);
+    for (size_t j = 1; j <= tree->size; j++)
+        needed_capacity += my_pow(2, j - 1);
 
     if (tree->capacity < needed_capacity)
     {
         tree->data = realloc(tree->data, needed_capacity);
+        for (size_t k = tree->capacity; k < needed_capacity; k++)
+            tree->data[k] = NULL;
         tree->capacity = needed_capacity;
     }
     if (!(tree->data))
@@ -47,9 +51,9 @@ void add(struct bst *tree, int value)
     while (tree->data[i])
     {
         if (value > tree->data[i]->val)
-            i = (tree->size - 1) * 2 + 2;
+            i = i * 2 + 2;
         else
-            i = (tree->size - 1) * 2 + 1;
+            i = i * 2 + 1;
     }
     if (!tree->data[i])
     {
