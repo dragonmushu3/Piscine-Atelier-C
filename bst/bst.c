@@ -1,18 +1,6 @@
 #include "bst.h"
 
 #include <stdlib.h>
-#include <stdio.h>
-
-void pretty_print(struct bst_node *tree, size_t spaces)
-{
-    if (!tree)
-        return;
-    pretty_print(tree->left, spaces + 2);
-    for (size_t i = 0; i < spaces; i++)
-        putchar(32);
-    putchar(tree->data);
-    pretty_print(tree->right, spaces + 2);
-}
 
 struct bst_node *create_node(int value)
 {

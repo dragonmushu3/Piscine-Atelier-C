@@ -5,7 +5,7 @@ LIBFLAG = -lcriterion
 check: testsuite
 	./testsuite
 
-testsuite: bst.o testsuite.o
+testsuite: bst.o testsuite.o bst_static.o
 	$(CC) $^ -fsanitize=address -o testsuite $(LIBFLAG)
 
 clean:
