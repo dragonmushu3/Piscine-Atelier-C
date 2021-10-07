@@ -6,7 +6,7 @@ check: testsuite
 	./testsuite
 
 testsuite: bst.o testsuite.o
-	$(CC) $^ -o testsuite $(LIBFLAG)
+	$(CC) $^ -fsanitize=address -o testsuite $(LIBFLAG)
 
 clean:
 	rm *.o testsuite
