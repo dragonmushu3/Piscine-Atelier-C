@@ -1,8 +1,6 @@
-#include <stddef.h>
-
 #include "connect4.h"
 
-void ch_dir( int x, int y, struct pt *c)
+void ch_dir(int x, int y, struct pt *c)
 {
     c->x_d = x;
     c->y_d = y;
@@ -10,7 +8,7 @@ void ch_dir( int x, int y, struct pt *c)
 
 void handle_w(struct stat *g, struct w_pair p)
 {
-    if (p.win1 == 4 || p.win2 == 4)
+    if (p.win1 >= 4 || p.win2 >= 4)
     {
         if (p.win1 > p.win2)
         {
@@ -18,7 +16,6 @@ void handle_w(struct stat *g, struct w_pair p)
                 g->k = 1;
             else
                 g->fail = 1;
-            p.win1 = 0;
         }
         else
         {
@@ -26,7 +23,6 @@ void handle_w(struct stat *g, struct w_pair p)
                 g->k = 2;
             else
                 g->fail = 1;
-            p.win2 = 0;
         }
     }
 }

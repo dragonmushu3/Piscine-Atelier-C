@@ -82,3 +82,265 @@ Test(suite2, real3)
     int res = connect4(game, 9, 10);
     cr_assert_eq(res, 0, "got %d instead of 0",res);
 }
+
+Test(suite2, x_column_win)
+{
+    char *game[10] =
+    {
+        "---------",
+        "---------",
+        "----X----",
+        "----X----",
+        "----X----",
+        "----X----",
+        "---------",
+        "---------",
+        "---------",
+        "---------"
+    };
+
+    int res = connect4(game, 9, 10);
+    cr_assert_eq(res, 1, "got %d instead of 1",res);
+}
+
+Test(suite2, x_column_win2)
+{
+    char *game[10] =
+    {
+        "---------",
+        "---------",
+        "---------",
+        "---------",
+        "---------",
+        "---------",
+        "X--------",
+        "X--------",
+        "X--------",
+        "X--------"
+    };
+
+    int res = connect4(game, 9, 10);
+    cr_assert_eq(res, 1, "got %d instead of 1",res);
+}
+
+Test(suite2, x_column_win3)
+{
+    char *game[10] =
+    {
+        "--------X",
+        "--------X",
+        "--------X",
+        "--------X",
+        "---------",
+        "---------",
+        "---------",
+        "---------",
+        "---------",
+        "---------"
+    };
+
+    int res = connect4(game, 9, 10);
+    cr_assert_eq(res, 1, "got %d instead of 1",res);
+}
+
+Test(suite2, x_column_double_win_diff_columns)
+{
+    char *game[10] =
+    {
+        "------X--",
+        "------X--",
+        "------X--",
+        "------X--",
+        "---X-----",
+        "---X-----",
+        "---X-----",
+        "---X-----",
+        "---------",
+        "---------"
+    };
+
+    int res = connect4(game, 9, 10);
+    cr_assert_eq(res, 0, "got %d instead of 0",res);
+}
+
+
+Test(suite2, x_column_double_win_same_column)
+{
+    char *game[10] =
+    {
+        "---------",
+        "-------X-",
+        "-------X-",
+        "-------X-",
+        "-------X-",
+        "-------X-",
+        "-------X-",
+        "-------X-",
+        "-------X-",
+        "---------"
+    };
+
+    int res = connect4(game, 9, 10);
+    cr_assert_eq(res, 0, "got %d instead of 0",res);
+}
+
+Test(suite2, x_column_double_win_same_column_space)
+{
+    char *game[10] =
+    {
+        "--X------",
+        "--X------",
+        "--X------",
+        "--X------",
+        "---------",
+        "--X------",
+        "--X------",
+        "--X------",
+        "--X------",
+        "---------"
+    };
+
+    int res = connect4(game, 9, 10);
+    cr_assert_eq(res, 0, "got %d instead of 0",res);
+}
+
+Test(suite2, o_column_win)
+{
+    char *game[10] =
+    {
+        "---------",
+        "---------",
+        "----O----",
+        "----O----",
+        "----O----",
+        "----O----",
+        "---------",
+        "---------",
+        "---------",
+        "---------"
+    };
+
+    int res = connect4(game, 9, 10);
+    cr_assert_eq(res, 2, "got %d instead of 2",res);
+}
+
+Test(suite2, o_column_win2)
+{
+    char *game[10] =
+    {
+        "---------",
+        "---------",
+        "---------",
+        "---------",
+        "---------",
+        "---------",
+        "O--------",
+        "O--------",
+        "O--------",
+        "O--------"
+    };
+
+    int res = connect4(game, 9, 10);
+    cr_assert_eq(res, 2, "got %d instead of 2",res);
+}
+
+Test(suite2, o_column_win3)
+{
+    char *game[10] =
+    {
+        "--------O",
+        "--------O",
+        "--------O",
+        "--------O",
+        "---------",
+        "---------",
+        "---------",
+        "---------",
+        "---------",
+        "---------"
+    };
+
+    int res = connect4(game, 9, 10);
+    cr_assert_eq(res, 2, "got %d instead of 2",res);
+}
+
+Test(suite2, o_column_double_win_diff_columns)
+{
+    char *game[10] =
+    {
+        "------O--",
+        "------O--",
+        "------O--",
+        "------O--",
+        "---O-----",
+        "---O-----",
+        "---O-----",
+        "---O-----",
+        "---------",
+        "---------"
+    };
+
+    int res = connect4(game, 9, 10);
+    cr_assert_eq(res, 0, "got %d instead of 0",res);
+}
+
+
+Test(suite2, o_column_double_win_same_column)
+{
+    char *game[10] =
+    {
+        "---------",
+        "-------O-",
+        "-------O-",
+        "-------O-",
+        "-------O-",
+        "-------O-",
+        "-------O-",
+        "-------O-",
+        "-------O-",
+        "---------"
+    };
+
+    int res = connect4(game, 9, 10);
+    cr_assert_eq(res, 0, "got %d instead of 0",res);
+}
+
+Test(suite2, o_column_double_win_same_column_space)
+{
+    char *game[10] =
+    {
+        "--O------",
+        "--O------",
+        "--O------",
+        "--O------",
+        "---------",
+        "--O------",
+        "--O------",
+        "--O------",
+        "--O------",
+        "---------"
+    };
+
+    int res = connect4(game, 9, 10);
+    cr_assert_eq(res, 0, "got %d instead of 0",res);
+}
+
+Test(suite2, x_column_5X)
+{
+    char *game[10] =
+    {
+        "---------",
+        "---------",
+        "---------",
+        "---------",
+        "---------",
+        "--X------",
+        "--X------",
+        "--X------",
+        "--X------",
+        "---------"
+    };
+
+    int res = connect4(game, 9, 10);
+    cr_assert_eq(res, 1, "got %d instead of 1",res);
+}
