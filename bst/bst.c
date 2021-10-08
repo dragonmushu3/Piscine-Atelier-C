@@ -54,7 +54,9 @@ int maximum(struct bst_node *tree, int max)
 struct bst_node *delete_node(struct bst_node *tree, int value)
 {
     if (!tree)
+    {
         return NULL;
+    }
 
     if (value > tree->data)
         tree->right = delete_node(tree->right, value);
@@ -68,15 +70,24 @@ struct bst_node *delete_node(struct bst_node *tree, int value)
             tree->left = delete_node(tree->left, tree->data);
             return tree;
         }
-        if (!tree->right)
+
+        if (!tree->right && !tree->left)
         {
             free(tree);
-            return tree->left;
+            return NULL;
+        }
+
+        if (!tree->right)
+        {
+            struct bst_node *temp = tree->left;
+            free(tree);
+            return temp;
         }
         else
         {
+            struct bst_node *temp = tree->right;
             free(tree);
-            return tree->right;
+            return temp;
         }
     }
     return tree;
