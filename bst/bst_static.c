@@ -20,41 +20,64 @@ struct bst *init(size_t capacity)
 
 size_t my_pow(size_t a, size_t n)
 {
+    size_t base = a;
     if (n == 0)
         return 1;
     if (n == 1)
         return a;
     for (size_t i = 1; i < n; i++)
     {
-        a *= a;
+        a *= base;
     }
     return a;
 }
 
+struct value **my_realloc(struct value **data, size_t cap, size_t old)
+{
+    struct value **new = malloc(sizeof(struct value *) * cap);
+    if (!new)
+        return NULL;
+    for (size_t i = 0; i < cap; i++)
+    {
+        new[i] = NULL;
+    }
+    for (size_t j = 0; j < old; j++)
+    {
+        new[j] = data[j];
+    }
+    free(data);
+    return new;
+}
+
 void add(struct bst *tree, int value)
 {
-    size_t needed_capacity = 0;
-    for (size_t j = 1; j <= tree->size; j++)
-        needed_capacity += my_pow(2, j - 1);
-
-    if (tree->capacity < needed_capacity)
-    {
-        tree->data = realloc(tree->data, needed_capacity);
-        for (size_t k = tree->capacity; k < needed_capacity; k++)
-            tree->data[k] = NULL;
-        tree->capacity = needed_capacity;
-    }
     if (!(tree->data))
         return;
 
     size_t i = 0;
+
     while (tree->data[i])
     {
         if (value > tree->data[i]->val)
+        {
             i = i * 2 + 2;
+            if (i > tree->capacity - 1)
+            {
+                tree->data = my_realloc(tree->data, i + 1, tree->capacity);
+                tree->capacity = i + 1;
+            }
+        }
         else
+        {
             i = i * 2 + 1;
+            if (i > tree->capacity - 1)
+            {
+                tree->data = my_realloc(tree->data, i + 1, tree->capacity);
+                tree->capacity = i + 1;
+            }
+        }
     }
+
     if (!tree->data[i])
     {
         struct value *new = malloc(sizeof(struct value));
