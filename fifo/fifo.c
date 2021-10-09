@@ -15,7 +15,7 @@ struct fifo *fifo_init(void)
 
 size_t fifo_size(struct fifo *fifo)
 {
-    return rec_count_listht(fifo->head);
+    return fifo->size;
 }
 
 void fifo_push(struct fifo *fifo, int elt)

@@ -1,4 +1,5 @@
 #include "fifo.h"
+#include "utilities.h"
 
 #include <stddef.h>
 #include <stdlib.h>
