@@ -344,3 +344,17 @@ Test(suite2, x_column_5X)
     int res = connect4(game, 9, 10);
     cr_assert_eq(res, 1, "got %d instead of 1",res);
 }
+
+Test(suite2, o_column_double_win_same_column_e)
+{
+    char *game[] =
+    {
+        "-------O",
+        "-------O",
+        "-------O",
+        "-------O",
+    };
+
+    int res = connect4(game, 8, 4);
+    cr_assert_eq(res, 2, "got %d instead of 2",res);
+}

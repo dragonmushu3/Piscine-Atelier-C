@@ -79,7 +79,7 @@ void traverse_columns(struct stat *s, char *game[])
     p.win1 = 0;
     p.win2 = 0;
 
-    for (size_t i = 0; i < s->lines; i++)
+    for (size_t i = 0; i < s->columns; i++)
     {
         c.y = i;
         check_dir(s, c, p, game);
