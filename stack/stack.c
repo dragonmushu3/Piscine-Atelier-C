@@ -1,7 +1,7 @@
+#include "stack.h"
+
 #include <stdlib.h>
 #include <stddef.h>
-
-#include "stack.h"
 
 struct stack *stack_push(struct stack *s, int e)
 {
