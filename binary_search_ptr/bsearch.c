@@ -1,6 +1,5 @@
 #include <stddef.h>
 
-
 int *binary_search(int *begin, int *end, int elt)
 {
     int diff = 0;
@@ -20,16 +19,14 @@ int *binary_search(int *begin, int *end, int elt)
             else if (elt > *m)
             {
                 begin = m + 1;
-                return binary_search(begin,end,elt);
+                return binary_search(begin, end, elt);
             }
-            else 
+            else
             {
                 end = m;
-                return binary_search(begin,end,elt);
+                return binary_search(begin, end, elt);
             }
         }
     }
     return rec(begin, end, elt);
 }
-
-

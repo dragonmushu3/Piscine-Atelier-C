@@ -1,9 +1,10 @@
+#include "hash_map.h"
+
 #include <stdbool.h>
-#include <stdlib.h>
 #include <stddef.h>
+#include <stdlib.h>
 
 #include "utilities.h"
-#include "hash_map.h"
 
 struct hash_map *hash_map_init(size_t size)
 {
@@ -48,7 +49,7 @@ struct pair_list *list_prepend(const char *key, char *value)
 }
 
 bool hash_map_insert(struct hash_map *hash_map, const char *key, char *value,
-    bool *updated)
+                     bool *updated)
 {
     int h_new = hash(key) % hash_map->size;
     struct pair_list *to_update = find_list(hash_map->data[h_new], key);
@@ -65,17 +66,15 @@ bool hash_map_insert(struct hash_map *hash_map, const char *key, char *value,
         hash_map->data[h_new] = list_prepend(hash_map->data[h_new]);
     }
 
-    if !(hash_map->data[h_new])
-        return false;
+    if
+        !(hash_map->data[h_new]) return false;
 }
 
 const char *hash_map_get(const struct hash_map *hash, const char *key)
 {
     for (size_t i = 0; i < hash->size; i++)
     {
-        char *res = find_list_char(hash->data[i], key)
-        if (res)
-            return res;
+        char *res = find_list_char(hash->data[i], key) if (res) return res;
     }
     return NULL;
 }

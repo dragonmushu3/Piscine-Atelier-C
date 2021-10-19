@@ -1,14 +1,12 @@
 
 #include <stddef.h>
 
-
-
 int my_pow(int a, int b)
 {
     int res = a;
-    for(int i = 1; i <= (b / 2); i++)
+    for (int i = 1; i <= (b / 2); i++)
     {
-        if ( i % 2 == 0)
+        if (i % 2 == 0)
         {
             res = res * res;
         }
@@ -16,5 +14,3 @@ int my_pow(int a, int b)
     }
     return res;
 }
-
-

@@ -8,7 +8,7 @@ Test(suite_1, test1)
     char *s2 = "hel";
     size_t res = levenshtein(s1, s2);
     size_t exp = 2;
-    cr_assert_eq(res, exp,"got %zu instead of %zu", res, exp);
+    cr_assert_eq(res, exp, "got %zu instead of %zu", res, exp);
 }
 
 Test(suite_2, test2)
@@ -17,7 +17,7 @@ Test(suite_2, test2)
     char *s2 = "hello";
     size_t res = levenshtein(s1, s2);
     size_t exp = 2;
-    cr_assert_eq(res, exp,"got %zu instead of %zu", res, exp);
+    cr_assert_eq(res, exp, "got %zu instead of %zu", res, exp);
 }
 
 Test(suite_3, test3)
@@ -26,7 +26,7 @@ Test(suite_3, test3)
     char *s2 = "hello";
     size_t res = levenshtein(s1, s2);
     size_t exp = 2;
-    cr_assert_eq(res, exp,"got %zu instead of %zu", res, exp);
+    cr_assert_eq(res, exp, "got %zu instead of %zu", res, exp);
 }
 
 Test(suite_4, test4)
@@ -35,7 +35,7 @@ Test(suite_4, test4)
     char *s2 = "bateau";
     size_t res = levenshtein(s1, s2);
     size_t exp = 5;
-    cr_assert_eq(res, exp,"got %zu instead of %zu", res, exp);
+    cr_assert_eq(res, exp, "got %zu instead of %zu", res, exp);
 }
 
 Test(suite_5, test5)
@@ -44,7 +44,7 @@ Test(suite_5, test5)
     char *s2 = "#';[]^";
     size_t res = levenshtein(s1, s2);
     size_t exp = 6;
-    cr_assert_eq(res, exp,"got %zu instead of %zu", res, exp);
+    cr_assert_eq(res, exp, "got %zu instead of %zu", res, exp);
 }
 
 Test(suite_6, test6)
@@ -53,6 +53,5 @@ Test(suite_6, test6)
     char *s2 = "pinneapple";
     size_t res = levenshtein(s1, s2);
     size_t exp = 4;
-    cr_assert_eq(res, exp,"got %zu instead of %zu", res, exp);
+    cr_assert_eq(res, exp, "got %zu instead of %zu", res, exp);
 }
-

@@ -1,5 +1,6 @@
-#include "levenshtein.h"
 #include <assert.h>
+
+#include "levenshtein.h"
 
 int main(void)
 {

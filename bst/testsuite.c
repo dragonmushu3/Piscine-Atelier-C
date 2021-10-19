@@ -98,7 +98,7 @@ Test(suite1, deletion2)
 
 Test(suite2, init)
 {
-    struct bst *tree = init( 10);
+    struct bst *tree = init(10);
     for (size_t i = 0; i < 10; i++)
     {
         cr_assert(!(tree->data[i]));
@@ -108,7 +108,7 @@ Test(suite2, init)
 
 Test(suite2, add)
 {
-    struct bst *tree = init( 10);
+    struct bst *tree = init(10);
 
     add(tree, 5);
     add(tree, 2);
@@ -124,7 +124,7 @@ Test(suite2, add)
 
 Test(suite2, add_many_then_search)
 {
-    struct bst *tree = init( 10);
+    struct bst *tree = init(10);
 
     for (size_t i = 10; i < 20; i++)
     {

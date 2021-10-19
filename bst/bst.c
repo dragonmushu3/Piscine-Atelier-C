@@ -18,9 +18,9 @@ struct bst_node *add_node(struct bst_node *tree, int value)
         return create_node(value);
 
     if (value > tree->data)
-         tree->right = add_node(tree->right, value);
+        tree->right = add_node(tree->right, value);
     else
-         tree->left = add_node(tree->left, value);
+        tree->left = add_node(tree->left, value);
 
     return tree;
 }

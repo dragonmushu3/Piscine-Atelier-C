@@ -1,8 +1,8 @@
-#include "dlist.h"
-
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <assert.h>
+
+#include "dlist.h"
 
 void list_free(struct dlist_item *item)
 {

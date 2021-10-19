@@ -1,13 +1,12 @@
-#include "bst_static.h"
-
-#include <stdio.h>
 #include <assert.h>
+#include <stdio.h>
 
 #include "bst.h"
+#include "bst_static.h"
 
 int main(void)
 {
-    struct bst *tree = init( 10);
+    struct bst *tree = init(10);
 
     for (size_t i = 10; i < 20; i++)
     {
