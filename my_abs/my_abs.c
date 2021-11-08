@@ -3,5 +3,5 @@
 
 int my_abs(int n)
 {
-    return abs(n);
+    return n * -1 * (n < 0) + n * (n >= 0);
 }
