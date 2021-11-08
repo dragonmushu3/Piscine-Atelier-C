@@ -1,8 +1,8 @@
-#include "fifo.h"
-
 #include <stddef.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+
+#include "fifo.h"
 
 size_t rec_count_listth(struct list *item)
 {

@@ -30,9 +30,9 @@ int next_alpha(const char text[], int old_min)
         }
         text++;
     }
-    while (*text !='\0')
+    while (*text != '\0')
     {
-        if (*text < min && *text > old_min)
+        if (*text<min && * text> old_min)
             min = *text;
         text++;
     }
@@ -68,7 +68,7 @@ int find_corresponding(struct info inf, size_t freq, size_t limit)
     {
         inf.table++;
         return find_corresponding(inf, freq, max_freq);
-    }   
+    }
 }
 
 void freq_analysis(const char text[], const char table[])

@@ -10,7 +10,7 @@ unsigned array_min(const int arr[], unsigned start, unsigned size)
             min = arr[i];
             min_index = i;
         }
-        i++; 
+        i++;
     }
     return min_index;
 }
