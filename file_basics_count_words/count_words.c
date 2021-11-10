@@ -2,7 +2,8 @@
 
 int my_isspace(char c)
 {
-    return c == '\f' || c == '\n' || c == '\r' || c == '\t' || c == '\v' || c == 32;
+    return c == '\f' || c == '\n' || c == '\r' || c == '\t' || c == '\v'
+        || c == 32;
 }
 
 int is_character(char c)

@@ -1,8 +1,8 @@
 #define _DEFAULT_SOURCE
-#include <stdio.h>
 #include <err.h>
-#include <string.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main(int argc, char *argv[])
 {
@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     FILE *csv = fopen(argv[1], "r");
     if (!csv)
         err(1, "%s", argv[1]);
-    
+
     size_t n = 0;
 
     char *line_ptr = NULL;
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
             printf("%d", 0);
             continue;
         }
-        
+
         int max = atoi(token);
         while (token)
         {
