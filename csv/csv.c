@@ -7,7 +7,7 @@
 int main(int argc, char *argv[])
 {
     if (argc == 1)
-        exit(1);
+        return 1;
 
     FILE *csv = fopen(argv[1], "r");
     if (!csv)
