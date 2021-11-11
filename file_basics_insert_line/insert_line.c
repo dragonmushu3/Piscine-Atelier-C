@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int insert_line(const char *file_in, const char *file_out, const char *content, size_t n)
+int insert_line(const char *file_in, const char *file_out, const char *content,
+                size_t n)
 {
     if (!file_in || !file_out || !content)
         return 1;
