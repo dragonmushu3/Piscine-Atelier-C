@@ -34,7 +34,7 @@ int insert_line(const char *file_in, const char *file_out, const char *content,
             continue;
         }
         fputs(line_buffer, f_out);
-        i++;
+        i += count_line_feed(line_buffer);
     }
 
     fputs(content, f_out);
@@ -42,7 +42,7 @@ int insert_line(const char *file_in, const char *file_out, const char *content,
     while (getline(&line_buffer, &not_n, f_in) != -1)
     {
         fputs(line_buffer, f_out);
-        i++;
+        i += count_line_feed(line_buffer);
     }
 
     size_t nb_lines = count_line_feed(content);
