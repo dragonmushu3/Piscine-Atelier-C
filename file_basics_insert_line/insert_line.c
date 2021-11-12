@@ -37,7 +37,7 @@ int insert_line(const char *file_in, const char *file_out, const char *content,
     }
 
     fputs(content, f_out);
-    if (*(content + my_strlen(content) - 1) == '\n')
+    if (content[my_strlen(content) - 1] == '\n')
         i++;
 
     while (getline(&line_buffer, &not_n, f_in) != -1)
