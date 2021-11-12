@@ -1,22 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-size_t my_strlen(const char *str)
+size_t count_line_feed(const char *content)
 {
-    size_t len;
-    while (*str != '\0')
+    size_t nb_lines = 0;
+    while (content && *content != '\0')
     {
-        len++;
-        str++;
+        if (*content == '\n')
+            nb_lines++;
+        content++;
     }
-    return len;
+    return nb_lines;
 }
 
 int insert_line(const char *file_in, const char *file_out, const char *content,
                 size_t n)
 {
     if (!file_in || !file_out || !content)
-        return 1;
+        return -1;
     FILE *f_in = fopen(file_in, "r");
     FILE *f_out = fopen(file_out, "w");
 
@@ -37,8 +38,6 @@ int insert_line(const char *file_in, const char *file_out, const char *content,
     }
 
     fputs(content, f_out);
-    if (content[my_strlen(content) - 1] == '\n')
-        i++;
 
     while (getline(&line_buffer, &not_n, f_in) != -1)
     {
@@ -46,8 +45,10 @@ int insert_line(const char *file_in, const char *file_out, const char *content,
         i++;
     }
 
+    size_t nb_lines = count_line_feed(content);
+
     free(line_buffer);
     fclose(f_in);
     fclose(f_out);
-    return i;
+    return i + nb_lines;
 }
