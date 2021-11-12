@@ -25,14 +25,16 @@ int insert_line(const char *file_in, const char *file_out, const char *content,
         i++;
     }
     fputs(content, f_out);
+    i++;
 
     while (getline(&line_buffer, &not_n, f_in) != -1)
     {
         fputs(line_buffer, f_out);
+        i++:
     }
 
     free(line_buffer);
     fclose(f_in);
     fclose(f_out);
-    return 0;
+    return i;
 }
