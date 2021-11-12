@@ -15,7 +15,7 @@ int insert_line(const char *file_in, const char *file_out, const char *content,
     size_t i = 0;
     while (i < n)
     {
-        if (getline(f_in, &line_buffer, &not_n) == -1)
+        if (getline(&line_buffer, &not_n, f_in) == -1)
         {
             fputs("\n", f_out);
             i++;
@@ -26,7 +26,7 @@ int insert_line(const char *file_in, const char *file_out, const char *content,
     }
     fputs(content, f_out);
 
-    while (getline(f_in, &line_buffer, &not_n) == -1)
+    while (getline(&line_buffer, &not_n, f_in) != -1)
     {
         fputs(line_buffer, f_out);
     }
