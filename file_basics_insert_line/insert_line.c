@@ -1,6 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+size_t my_strlen(const char *str)
+{
+    size_t len;
+    while (*str != '\0')
+    {
+        len++;
+        str++;
+    }
+    return len;
+}
+
 int insert_line(const char *file_in, const char *file_out, const char *content,
                 size_t n)
 {
@@ -24,8 +35,10 @@ int insert_line(const char *file_in, const char *file_out, const char *content,
         fputs(line_buffer, f_out);
         i++;
     }
+
     fputs(content, f_out);
-    i++;
+    if (*(content + my_strlen(content) - 1) == '\n')
+        i++;
 
     while (getline(&line_buffer, &not_n, f_in) != -1)
     {
