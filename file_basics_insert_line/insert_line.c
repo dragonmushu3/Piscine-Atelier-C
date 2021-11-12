@@ -18,6 +18,9 @@ int insert_line(const char *file_in, const char *file_out, const char *content,
 {
     if (!file_in || !file_out || !content)
         return -1;
+
+    int in_too_small = 0;
+
     FILE *f_in = fopen(file_in, "r");
     FILE *f_out = fopen(file_out, "w");
 
@@ -29,6 +32,7 @@ int insert_line(const char *file_in, const char *file_out, const char *content,
     {
         if (getline(&line_buffer, &not_n, f_in) == -1)
         {
+            in_too_small = 1;
             fputs("\n", f_out);
             i++;
             continue;
@@ -50,5 +54,7 @@ int insert_line(const char *file_in, const char *file_out, const char *content,
     free(line_buffer);
     fclose(f_in);
     fclose(f_out);
+    if (in_too_small == 1)
+        i++;
     return i + nb_lines;
 }
