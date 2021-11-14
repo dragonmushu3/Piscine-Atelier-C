@@ -2,31 +2,23 @@
 
 int *binary_search(int *begin, int *end, int elt)
 {
-    int diff = 0;
-    int inter = 0;
-    int *m = NULL;
-    int *rec(int *begin, int *end, int elt)
+    int size = end - begin;
+    if (size == 0)
     {
-        if (end - begin == 0)
-            return end;
+        return begin;
+    }
+    else
+    {
+        int m = size / 2;
+        if (elt == begin[m])
+            return begin + m;
+        else if (elt > begin[m])
+        {
+            return binary_search(begin + m + 1, end, elt);
+        }
         else
         {
-            inter = end - begin;
-            diff = inter / 2;
-            m = begin + diff;
-            if (elt == *m)
-                return m;
-            else if (elt > *m)
-            {
-                begin = m + 1;
-                return binary_search(begin, end, elt);
-            }
-            else
-            {
-                end = m;
-                return binary_search(begin, end, elt);
-            }
+            return binary_search(begin, end - m - 1, elt);
         }
     }
-    return rec(begin, end, elt);
 }
