@@ -8,14 +8,9 @@ unsigned long fibo_iter(unsigned long n)
     
     for (unsigned long i = 0; i < n; i++)
     {
-        if (i <= 1)
-            res = i;
-        else
-        {
-            res = u0 + u1;
-            u0 = u1;
-            u1 = res;
-        }
+        res = u0 + u1;
+        u0 = u1;
+        u1 = res;
     }
     return res;
 }
