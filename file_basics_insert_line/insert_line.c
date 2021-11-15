@@ -53,6 +53,11 @@ int insert_line(const char *file_in, const char *file_out, const char *content,
         total_line_feeds += count_line_feed(line_buffer);
     }
 
+    if (total_line_feeds == 2 && count_line_feed(content) == 0)
+    {
+        total_line_feeds++;
+    }
+
     free(line_buffer);
     fclose(f_in);
     fclose(f_out);
