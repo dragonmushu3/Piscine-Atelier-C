@@ -3,7 +3,7 @@
 int *binary_search(int *begin, int *end, int elt)
 {
     int size = end - begin;
-    if (size == 0)
+    if (size <= 0)
     {
         return begin;
     }
