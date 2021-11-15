@@ -3,9 +3,26 @@
 size_t my_strlen(const char *s)
 {
     size_t res = 0;
-    while (*s !='\0')
+    while (*s != '\0')
     {
         res++;
+        s++;
+    }
+    return res;
+}
+
+int my_isalphnum(char c)
+{
+    return c != 32 && c != 39 && c != ',' && c != '-' && c != '.';
+}
+
+int real_len(const char *s)
+{
+    size_t res = 0;
+    while (*s != '\0')
+    {
+        if (my_isalphnum(*s))
+            res++;
         s++;
     }
     return res;
@@ -17,12 +34,30 @@ int palindrome(const char *s)
         return 0;
 
     size_t len = my_strlen(s);
+    size_t true_len = real_len(s);
     size_t i = 0;
-    while (i < len / 2)
+    size_t j = len - 1;
+
+    while (i < true_len / 2)
     {
-        if (s[i] != s[len - 1 - i])
-            return 0;
-        i++;
+        if (my_isalphnum(s[i]))
+        {
+            if (my_isalphnum(s[j]))
+            {
+                if (s[i] != s[j])
+                    return 0;
+                j--;
+                i++;
+            }
+            else
+            {
+                j--;
+            }
+        }
+        else
+        {
+            i++;
+        }
     }
     return 1;
 }
