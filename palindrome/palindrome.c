@@ -37,8 +37,9 @@ int palindrome(const char *s)
     size_t true_len = real_len(s);
     size_t i = 0;
     size_t j = len - 1;
+    size_t true_index = 0;
 
-    while (i < true_len / 2)
+    while (true_index < true_len / 2)
     {
         if (my_isalphnum(s[i]))
         {
@@ -48,6 +49,7 @@ int palindrome(const char *s)
                     return 0;
                 j--;
                 i++;
+                true_index++;
             }
             else
             {
@@ -60,4 +62,9 @@ int palindrome(const char *s)
         }
     }
     return 1;
+}
+
+int main(void)
+{
+    return palindrome("Tu l'aS troP ete, port-SaluT.");
 }
