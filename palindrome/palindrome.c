@@ -63,8 +63,3 @@ int palindrome(const char *s)
     }
     return 1;
 }
-
-int main(void)
-{
-    return palindrome("Tu l'aS troP ete, port-SaluT.");
-}
