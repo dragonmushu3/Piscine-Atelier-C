@@ -50,8 +50,8 @@ int insert_line(const char *file_in, const char *file_out, const char *content,
     }
 
     size_t nb_lines = count_line_feed(content);
-    if (nb_line == 0)
-        nb_line++;
+    if (nb_lines == 0)
+        nb_lines++;
 
     free(line_buffer);
     fclose(f_in);
