@@ -23,7 +23,6 @@ struct int_vector int_vector_insert_sort(struct int_vector vec)
                 vec = swap(vec, k, k + 1);
             j--;
         }
-        vec.data[j] = temp;
     }
     return vec;
 }
