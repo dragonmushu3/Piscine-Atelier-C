@@ -28,33 +28,33 @@ int insert_line(const char *file_in, const char *file_out, const char *content,
     char *line_buffer = NULL;
     size_t not_n = 0;
 
+    size_t total_line_feeds = 0;
     size_t i = 0;
     while (i < n)
     {
         if (getline(&line_buffer, &not_n, f_in) == -1)
         {
             fputs("\n", f_out);
+            total_line_feeds += count_line_feed("\n");
             i++;
             continue;
         }
         fputs(line_buffer, f_out);
-        i += count_line_feed(line_buffer);
+        total_line_feeds += count_line_feed(line_buffer);
+        i++;
     }
 
     fputs(content, f_out);
+    total_line_feeds += count_line_feed(content);
 
     while (getline(&line_buffer, &not_n, f_in) != -1)
     {
         fputs(line_buffer, f_out);
-        i += count_line_feed(line_buffer);
+        total_line_feeds += count_line_feed(line_buffer);
     }
-
-    size_t nb_lines = count_line_feed(content);
-    if (nb_lines == 0)
-        nb_lines++;
 
     free(line_buffer);
     fclose(f_in);
     fclose(f_out);
-    return i + nb_lines;
+    return total_line_feeds;
 }
