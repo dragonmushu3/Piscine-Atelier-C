@@ -12,14 +12,15 @@ static struct int_vector swap(struct int_vector vec, size_t i, size_t j)
 
 struct int_vector int_vector_insert_sort(struct int_vector vec)
 {
-    for (int i = 0; i < vec.size; i++)
+    for (size_t i = 0; i < vec.size; i++)
     {
         int temp = vec.data[i];
         int j = i - 1;
         while (j >= 0)
         {
-            if (vec.data[j] > temp)
-                vec = swap(vec, j, j + 1);
+            size_t k = j;
+            if (vec.data[k] > temp)
+                vec = swap(vec, k, k + 1);
             j--;
         }
         vec.data[j] = temp;
