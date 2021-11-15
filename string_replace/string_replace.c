@@ -32,26 +32,32 @@ char *string_replace(char c, const char *str, const char *pattern)
     size_t pattern_len = my_strlen(pattern);
 
     /* one more for null character */
-    char *new_str_buffer = calloc(nb_occur * pattern_len + (current_len - nb_occur) + 1, sizeof(char));
+    size_t total_buffer_size = nb_occur * pattern_len + (current_len - nb_occur);
+    char *new_str_buffer = calloc(total_buffer_size + 1, sizeof(char));
 
-    size_t i = 0;
-    while (i < current_len)
+    size_t str_i = 0;
+    size_t buffer_j = 0;
+    while (str_i < current_len)
     {
-        if (str[i] == c)
+        if (str[str_i] == c)
         {
-            size_t j = 0;
-            while ( j < pattern_len)
+            size_t k = 0;
+            while ( k < pattern_len)
             {
-                new_str_buffer[i] = pattern[j];
-                i++;
-                j++;
+                new_str_buffer[buffer_j] = pattern[k];
+                k++;
+                buffer_j++;
             }
+            str_i++;
         }
-
-        new_str_buffer[i] = str[i];
-        i++;
+        else
+        {
+            new_str_buffer[buffer_j] = str[str_i];
+            str_i++;
+            buffer_j++;
+        }
     }
 
-    new_str_buffer = '\0';
+    new_str_buffer[total_buffer_size] = '\0';
     return new_str_buffer;
 }
