@@ -5,7 +5,7 @@ unsigned long fibo_iter(unsigned long n)
     unsigned long u0 = 0;
     unsigned long u1 = 1;
     unsigned long res = 0;
-    
+
     if (n == 0)
     {
         return 0;

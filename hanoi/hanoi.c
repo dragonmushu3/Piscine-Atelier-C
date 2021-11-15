@@ -11,7 +11,7 @@ void hanoi_aux(unsigned n, char first_rod, char middle_rod, char last_rod)
         putchar('\n');
         return;
     }
-    
+
     hanoi_aux(n - 1, first_rod, last_rod, middle_rod);
     putchar(first_rod);
     putchar('-');

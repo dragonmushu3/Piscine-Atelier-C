@@ -3,7 +3,7 @@
 size_t my_strlen(const char *s)
 {
     size_t res = 0;
-    while( *s != '\0')
+    while (*s != '\0')
     {
         res++;
         s++;
@@ -11,14 +11,13 @@ size_t my_strlen(const char *s)
     return res;
 }
 
-
 int my_atoi(const char *str)
 {
     while (*str == 32)
     {
         str++;
     }
-    
+
     int is_negative = 0;
     if (*str == '\0')
     {
@@ -37,7 +36,7 @@ int my_atoi(const char *str)
 
     if (*str > 57 || *str < 48)
         return 0;
-    
+
     size_t digits = my_strlen(str);
     int res = 0;
 
@@ -50,14 +49,13 @@ int my_atoi(const char *str)
         else
         {
             size_t ten_pow = 1;
-            for (size_t j = 0; j < digits - 1 - i; j ++)
+            for (size_t j = 0; j < digits - 1 - i; j++)
             {
                 ten_pow *= 10;
             }
             res += (str[i] - 48) * ten_pow;
         }
     }
-    
 
     if (is_negative)
         return -res;

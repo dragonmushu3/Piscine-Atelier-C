@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <stddef.h>
+#include <stdio.h>
 
 int binary_search_sub(const int vec[], size_t size, int elt, int *not_found)
 {
@@ -18,7 +18,8 @@ int binary_search_sub(const int vec[], size_t size, int elt, int *not_found)
             return m;
         else if (elt > vec[m])
         {
-            return m + 1 + binary_search_sub(vec + m + 1, size - m - 1, elt, not_found);
+            return m + 1
+                + binary_search_sub(vec + m + 1, size - m - 1, elt, not_found);
         }
         else
         {
