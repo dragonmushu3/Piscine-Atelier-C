@@ -10,6 +10,11 @@ void add(struct heap *heap, int val)
     }
 
     heap->array[heap->size] = val;
+    if (heap->size == 0)
+    {
+        heap->size++;
+        return;
+    }
 
     size_t parent_index = (heap->size - 1) / 2;
     size_t child_index = heap->size;
