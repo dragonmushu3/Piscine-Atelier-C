@@ -24,7 +24,7 @@ int count_digits(int n)
         n = -n;
     if (n == 0)
         return 1;
-    
+
     int no_digits = 0;
     while (!(n == 0))
     {

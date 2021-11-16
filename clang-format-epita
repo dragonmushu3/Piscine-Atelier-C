@@ -1,0 +1,24 @@
+#!/nix/store/wv35g5lff84rray15zlzarcqi9fxzz84-bash-4.4-p23/bin/bash
+# This script checks a git repository has a clang-format configuration and runs
+# clang-format with the given parameters.
+
+die() {
+    printf "\033[0;31m${@}\033[0m\n"
+    exit 1
+}
+
+repo="$(/nix/store/cpx9hzqcxci468qjwx1yk9k8rwmhlqxl-git-2.31.1/bin/git rev-parse --show-toplevel 2>/dev/null)"
+
+if test "$?" -ne 0; then
+    die "You must run this script from the work tree of a git repository"
+fi
+
+clang_format_file="${repo}/.clang-format"
+
+if ! test -f "${clang_format_file}"; then
+    die "Failed to find clang-format configuration at ${clang_format_file}"
+fi
+
+/nix/store/li07j4a263fbfp3rg96hlnb06dspvqk4-findutils-4.7.0/bin/find "$repo" -type f -name '*.[ch]' -exec /nix/store/jnf2yvcr0akiivlcwdr63yvyjnxadz52-clang-tools-11.1.0/bin/clang-format --style=file -i {} ';'
+
+

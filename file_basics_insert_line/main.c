@@ -1,5 +1,6 @@
-#include "insert_line.h"
 #include <stdlib.h>
+
+#include "insert_line.h"
 
 int main(int argc, char *argv[])
 {

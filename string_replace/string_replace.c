@@ -3,7 +3,7 @@
 size_t my_strlen(const char *s)
 {
     size_t res = 0;
-    while(*s != '\0')
+    while (*s != '\0')
     {
         res++;
         s++;
@@ -14,7 +14,7 @@ size_t my_strlen(const char *s)
 size_t count_char_occ(const char *s, char c)
 {
     size_t res = 0;
-    while(*s != '\0')
+    while (*s != '\0')
     {
         if (*s == c)
         {
@@ -50,7 +50,6 @@ char *string_replace_null_pat(char c, const char *str)
 
     new_str_buffer[total_buffer_size] = '\0';
     return new_str_buffer;
-
 }
 
 char *string_replace(char c, const char *str, const char *pattern)
@@ -68,7 +67,8 @@ char *string_replace(char c, const char *str, const char *pattern)
         return string_replace_null_pat(c, str);
 
     /* one more for null character */
-    size_t total_buffer_size = nb_occur * pattern_len + (current_len - nb_occur);
+    size_t total_buffer_size =
+        nb_occur * pattern_len + (current_len - nb_occur);
     char *new_str_buffer = calloc(total_buffer_size + 1, sizeof(char));
 
     size_t str_i = 0;
@@ -78,7 +78,7 @@ char *string_replace(char c, const char *str, const char *pattern)
         if (str[str_i] == c)
         {
             size_t k = 0;
-            while ( k < pattern_len)
+            while (k < pattern_len)
             {
                 new_str_buffer[buffer_j] = pattern[k];
                 k++;

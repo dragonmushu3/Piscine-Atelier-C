@@ -1,14 +1,14 @@
-#include "heap_sort.h"
-#include <time.h>
-#include <stdlib.h>
 #include <stddef.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#include "heap_sort.h"
 
 void Test_1(void)
 {
     srand(time(NULL));
     int correct = 1;
-
 
     int passed_tests = 0;
     while (correct)
@@ -46,15 +46,15 @@ void Test_1(void)
         }
         else
         {
-            //printf("#############################################\n");
-            //for (int i = 0; i < size; i++)
+            // printf("#############################################\n");
+            // for (int i = 0; i < size; i++)
             //{
             //    printf("%d ", arr[i]);
             //}
-            //printf("\n\n");
+            // printf("\n\n");
             passed_tests++;
-            //printf("Passed %d tests.\n\n", passed_tests);
-            //printf("#############################################\n");
+            // printf("Passed %d tests.\n\n", passed_tests);
+            // printf("#############################################\n");
             free(arr);
         }
     }
@@ -62,7 +62,7 @@ void Test_1(void)
 
 void Test_2(void)
 {
-    int arr[1] = {5};
+    int arr[1] = { 5 };
     heapify(arr, 1);
     for (int i = 0; i < 1; i++)
     {
@@ -74,12 +74,11 @@ void Test_2(void)
     {
         printf("%d ", arr[i]);
     }
-
 }
 
 int main(void)
 {
-    //Test_1();
+    // Test_1();
     Test_2();
     return 0;
 }

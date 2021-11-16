@@ -1,10 +1,10 @@
-#include "heap.h"
-#include "create.h"
-#include "add.h"
-#include "print.h"
-#include "del.h"
-
 #include <stdio.h>
+
+#include "add.h"
+#include "create.h"
+#include "del.h"
+#include "heap.h"
+#include "print.h"
 
 void Test_1(void)
 {

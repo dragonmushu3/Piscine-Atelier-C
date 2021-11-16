@@ -25,7 +25,6 @@ void actual_heapify(int *array, size_t index, size_t size)
         array[max_ind] = temp;
         actual_heapify(array, max_ind, size);
     }
-
 }
 /*this is actually build heap*/
 void heapify(int *array, size_t size)

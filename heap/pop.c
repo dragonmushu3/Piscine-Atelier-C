@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <stddef.h>
+
 #include "heap.h"
 
 int pop(struct heap *heap)

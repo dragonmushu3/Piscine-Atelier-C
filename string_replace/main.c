@@ -1,5 +1,6 @@
-#include "string_replace.h"
 #include <stdio.h>
+
+#include "string_replace.h"
 
 void check(char c, const char *s, const char *p)
 {

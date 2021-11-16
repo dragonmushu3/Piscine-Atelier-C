@@ -1,4 +1,5 @@
 #include <stdlib.h>
+
 #include "heap.h"
 
 struct heap *create_heap(void)

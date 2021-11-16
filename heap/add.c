@@ -1,4 +1,5 @@
 #include <stdlib.h>
+
 #include "heap.h"
 
 void add(struct heap *heap, int val)
