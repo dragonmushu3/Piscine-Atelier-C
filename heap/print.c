@@ -34,29 +34,40 @@ int count_digits(int n)
     return no_digits;
 }
 
+void print_heap_ind(const struct heap *heap, size_t index, size_t max_index)
+{
+    /*count element digits*/
+    int no_digits = count_digits(heap->array[index]);
+
+    /*print each digit*/
+    int to_print = heap->array[index];
+    if (to_print < 0)
+    {
+        to_print = -to_print;
+        putchar('-');
+    }
+
+    for (int i = no_digits; i >= 1; i--)
+    {
+        putchar(digit(to_print, i) + 48);
+    }
+
+    if (index == max_index)
+        putchar('\n');
+    else
+        putchar(32);
+
+    if (2 * index + 1 < heap->size)
+        print_heap_ind(heap, 2 * index + 1, max_index);
+
+    if (2 * index + 2 < heap->size)
+        print_heap_ind(heap, 2 * index + 2, max_index);
+}
+
 void print_heap(const struct heap *heap)
 {
-    for (size_t arr_index = 0; arr_index < heap->size; arr_index++)
-    {
-        /*count element digits*/
-        int no_digits = count_digits(heap->array[arr_index]);
-
-        /*print each digit*/
-        int to_print = heap->array[arr_index];
-        if (to_print < 0)
-        {
-            to_print = -to_print;
-            putchar('-');
-        }
-
-        for (int i = no_digits; i >= 1; i--)
-        {
-            putchar(digit(to_print, i) + 48);
-        }
-
-        if (arr_index == heap->size - 1)
-            putchar('\n');
-        else
-            putchar(32);
-    }
+    size_t max_index = 0;
+    while (2 * max_index + 2 < heap->size)
+        max_index = 2 * max_index + 2;
+    print_heap_ind(heap, 0, max_index);
 }
