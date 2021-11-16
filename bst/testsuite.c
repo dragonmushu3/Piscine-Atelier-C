@@ -39,6 +39,17 @@ Test(suite1, insertion)
     free_bst(root);
 }
 
+Test(suite1, insertion2)
+{
+    struct bst_node *root = add_node(NULL, 10);
+    root = add_node(root, 10);
+    root = add_node(root, 10);
+
+    cr_assert(root->left == NULL);
+    cr_assert(root->right == NULL);
+    free_bst(root);
+}
+
 Test(suite1, find)
 {
     struct bst_node *root = create_node(5);
