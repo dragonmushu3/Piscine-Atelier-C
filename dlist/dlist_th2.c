@@ -40,9 +40,17 @@ struct dlist_item *rec_get_item(struct dlist_item *item, size_t index)
 
 int dlist_get(struct dlist *list, size_t index)
 {
-    if (!list)
+    if (!list || index > (list->size - 1))
         return -1;
-    return rec_get(list->tail, index);
+    struct dlist_item *ptr = list->tail;
+    size_t curr_index = 0;
+    while (ptr->next)
+    {
+        if (curr_index == index)
+            return ptr->data;
+        curr_index++;
+    }
+    return -1;
 }
 
 int dlist_find(const struct dlist *list, int element)
