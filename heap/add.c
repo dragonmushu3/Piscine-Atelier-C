@@ -5,7 +5,7 @@ void add(struct heap *heap, int val)
 {
     if (heap->size == heap->capacity)
     {
-        heap->array = realloc(heap->array, sizeof(int) * heap->capacity + 1);
+        heap->array = realloc(heap->array, sizeof(int) * (heap->capacity + 1));
         heap->capacity += 1;
     }
 
