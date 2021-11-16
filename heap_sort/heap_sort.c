@@ -30,6 +30,10 @@ void actual_heapify(int *array, size_t index, size_t size)
 /*this is actually build heap*/
 void heapify(int *array, size_t size)
 {
+    if (size == 1 || size == 0)
+    {
+        return;
+    }
     for (size_t i = size / 2 - 1; i != 0; i--)
     {
         actual_heapify(array, i, size);
@@ -39,6 +43,9 @@ void heapify(int *array, size_t size)
 
 void heap_sort(int *array, size_t size)
 {
+    if (size == 1 || size == 0)
+        return;
+
     heapify(array, size);
     for (size_t i = size - 1; i != 0; i--)
     {
