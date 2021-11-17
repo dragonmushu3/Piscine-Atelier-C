@@ -3,106 +3,35 @@
 
 size_t my_strlen(const char *s)
 {
-    size_t i = 0;
-    while (s[i])
-        i++;
-    return i;
+    size_t len = 0;
+    while (*s != '\0')
+    {
+        s++;
+        len++;
+    }
+    return len;
 }
 
-size_t count_diff_str(const char *lev, const char *s_big, size_t len)
+int min_of_three(int n, int m, int l)
 {
-    size_t res = 0;
-    for (size_t i = 0; i < len; i++)
-    {
-        if (lev[i] != s_big[i])
-            res++;
-    }
-    return res;
-}
-
-char *my_strcpy(const char *s, size_t len)
-{
-    char *res = malloc(sizeof(char) * (len + 1));
-    for (size_t i = 0; i < len; i++)
-    {
-        res[i] = s[i];
-    }
-    res[len] = '\0';
-    return res;
-}
-
-size_t count_spaces(const char *s, size_t *len)
-{
-    size_t t_spaces = 0;
-    for (size_t i = 0; i < *len; i++)
-    {
-        if (s[i] == 32)
-            t_spaces += 1;
-    }
-    return t_spaces;
-}
-
-char *strcpy_no_spaces(const char *s, size_t *len, size_t *spaces)
-{
-    size_t j = 0;
-    size_t nb_spaces = count_spaces(s, len);
-    char *res = malloc(sizeof(char) * (*len - nb_spaces + 1));
-
-    for (size_t i = 0; i < *len; i++)
-    {
-        if (s[i] == 32)
-            continue;
-        else
-        {
-            res[j] = s[i];
-            j++;
-        }
-    }
-
-    res[(*len - nb_spaces)] = '\0';
-    *spaces += nb_spaces;
-    *len -= nb_spaces;
-    return res;
+    if (m < n)
+        n = m;
+    if (l < n)
+        n = l;
+    return n;
 }
 
 size_t levenshtein(const char *s1, const char *s2)
 {
-    size_t len1 = my_strlen(s1);
-    size_t len2 = my_strlen(s2);
-    size_t big_len = 0;
-    size_t small_len = 0;
-    size_t spaces = 0;
-    char *small_str = NULL;
-    char *big_str = NULL;
+    if (*s1 == '\0')
+        return my_strlen(s2);
+    if (*s2 == '\0')
+        return my_strlen(s1);
 
-    if (len1 <= len2)
-    {
-        small_len = len1;
-        small_str = strcpy_no_spaces(s1, &small_len, &spaces);
-        big_len = len2;
-        big_str = strcpy_no_spaces(s2, &big_len, &spaces);
-    }
-    else
-    {
-        small_len = len2;
-        small_str = strcpy_no_spaces(s2, &small_len, &spaces);
-        big_len = len1;
-        big_str = strcpy_no_spaces(s1, &big_len, &spaces);
-    }
+    if (*s1 == *s2)
+        return levenshtein(s1 + 1, s2 + 1);
 
-    char *lev = malloc(sizeof(char) * (big_len + 1));
-
-    for (size_t i = 0; i < big_len + 1; i++)
-    {
-        if (i < small_len)
-            lev[i] = small_str[i];
-        else
-            lev[i] = '\0';
-    }
-
-    size_t res = count_diff_str(big_str, lev, big_len);
-    free(lev);
-    free(big_str);
-    free(small_str);
-    return res + spaces;
+    return 1
+        + min_of_three(levenshtein(s1, s2 + 1), levenshtein(s1 + 1, s2),
+                       levenshtein(s1 + 1, s2 + 1));
 }
