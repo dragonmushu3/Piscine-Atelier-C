@@ -44,11 +44,12 @@ int dlist_get(struct dlist *list, size_t index)
         return -1;
     struct dlist_item *ptr = list->tail;
     size_t curr_index = 0;
-    while (ptr->next)
+    while (ptr)
     {
         if (curr_index == index)
             return ptr->data;
         curr_index++;
+        ptr = ptr->next;
     }
     return -1;
 }
