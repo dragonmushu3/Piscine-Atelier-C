@@ -42,6 +42,7 @@ int dlist_get(struct dlist *list, size_t index)
 {
     if (!list || index > (list->size - 1))
         return -1;
+
     struct dlist_item *ptr = list->head;
     size_t curr_index = 0;
     while (ptr)
@@ -58,7 +59,17 @@ int dlist_find(const struct dlist *list, int element)
 {
     if (!list)
         return -1;
-    return rec_search_dlistth(list->tail, element, 0);
+
+    struct dlist_item *ptr = list->head;
+    size_t curr_index = 0;
+    while (ptr)
+    {
+        if (ptr->data == element)
+            return curr_index;
+        curr_index++;
+        ptr = ptr->prev;
+    }
+    return -1;
 }
 
 int dlist_insert_at(struct dlist *list, int element, size_t index)
