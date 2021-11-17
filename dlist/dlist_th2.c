@@ -74,14 +74,18 @@ int dlist_find(const struct dlist *list, int element)
 
 int dlist_insert_at(struct dlist *list, int element, size_t index)
 {
-    if (index > list->size || (!list))
+    if (!list || index > list->size)
         return -1;
 
     struct dlist_item *ptr = list->head;
     size_t curr_index = 0;
 
     if (index == list->size)
+        return dlist_push_back(list, element);
+    if (index == 0)
+    {
         return dlist_push_front(list, element);
+    }
 
     while (ptr)
     {
@@ -90,6 +94,7 @@ int dlist_insert_at(struct dlist *list, int element, size_t index)
             struct dlist_item *new = malloc(sizeof(struct dlist_item));
             if (!new)
                 return -1;
+            new->data = element;
             new->prev = ptr;
             new->next = ptr->next;
             if (ptr->next)
