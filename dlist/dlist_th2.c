@@ -113,34 +113,25 @@ int dlist_insert_at(struct dlist *list, int element, size_t index)
 
 int dlist_remove_at(struct dlist *list, size_t index)
 {
-    if (index >= list->size || (!list))
+    if (!list || index >= list->size)
         return -1;
-    int res = -1;
-    if (index > 0 && index < list->size - 1)
+
+    struct dlist_item *ptr = list->head;
+    size_t curr_index = 0;
+
+    while (ptr)
     {
-        struct dlist_item *ptr_back = rec_get_item(list->tail, index - 1);
-        struct dlist_item *ptr_front = rec_get_item(list->tail, index + 1);
-        ptr_back->next = ptr_front;
-        ptr_front->prev = ptr_back;
-        struct dlist_item *to_del = rec_get_item(list->tail, index);
-        res = to_del->data;
-        free(to_del);
+        if (curr_index == index)
+        {
+            struct dlist_item *temp = ptr->next;
+            ptr->next->prev = ptr->prev;
+            ptr->prev->next = temp;
+            int data = ptr->data;
+            free(ptr);
+            return data;
+        }
+        curr_index++;
+        ptr = ptr->prev;
     }
-    else if (index == 0)
-    {
-        struct dlist_item *ptr_front = rec_get_item(list->tail, index + 1);
-        ptr_front->prev = NULL;
-        struct dlist_item *to_del = rec_get_item(list->tail, index);
-        res = to_del->data;
-        free(to_del);
-    }
-    else if (index == list->size - 1)
-    {
-        struct dlist_item *ptr_back = rec_get_item(list->tail, index - 1);
-        ptr_back->next = NULL;
-        struct dlist_item *to_del = rec_get_item(list->tail, index);
-        res = to_del->data;
-        free(to_del);
-    }
-    return res;
+    return -1;
 }
