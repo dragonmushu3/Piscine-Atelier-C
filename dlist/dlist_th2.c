@@ -76,26 +76,32 @@ int dlist_insert_at(struct dlist *list, int element, size_t index)
 {
     if (index > list->size || (!list))
         return -1;
+
+    struct dlist_item *ptr = list->head;
+    size_t curr_index = 0
+
     if (index == list->size)
         return dlist_push_front(list, element);
-    else
+
+    while (ptr)
     {
-        if (index > 0)
+        if (curr_index == index)
         {
-            struct dlist_item *ptr_index = rec_get_item(list->tail, index);
-            struct dlist_item *ptr_size = rec_get_item(list->tail, index - 1);
             struct dlist_item *new = malloc(sizeof(struct dlist_item));
             if (!new)
                 return -1;
-            new->data = element;
-            new->next = ptr_size;
-            new->prev = ptr_index;
-            list->size += 1;
+            new->prev = ptr;
+            new->next = ptr->next;
+            if (ptr->next)
+            {
+                ptr->next->prev = new;
+            }
+            ptr->next = new;
+            list->size++;
+            return 1;
         }
-        else if (index == 0)
-        {
-            return dlist_push_back(list, element);
-        }
+        curr_index++;
+        ptr = ptr->prev;
     }
     return -1;
 }
