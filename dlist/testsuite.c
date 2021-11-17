@@ -82,15 +82,18 @@ Test(suite_3, insert_at)
 
     dlist_insert_at(list, 23, 0);
     int element_at_index = dlist_get(list, 0);
-    cr_assert_eq(23, element_at_index, "got %d instead of %d", element_at_index, 23);
+    cr_assert_eq(23, element_at_index, "got %d instead of %d", element_at_index,
+                 23);
 
     dlist_insert_at(list, 25, list->size);
     element_at_index = dlist_get(list, list->size - 1);
-    cr_assert_eq(25, element_at_index, "got %d instead of %d", element_at_index, 25);
+    cr_assert_eq(25, element_at_index, "got %d instead of %d", element_at_index,
+                 25);
 
     dlist_insert_at(list, 6, 1);
     element_at_index = dlist_get(list, 1);
-    cr_assert_eq(6, element_at_index, "got %d instead of %d", element_at_index, 6);
+    cr_assert_eq(6, element_at_index, "got %d instead of %d", element_at_index,
+                 6);
 
     dlist_insert_at(list, 11, 5);
     cr_assert_eq(11, dlist_get(list, 5));

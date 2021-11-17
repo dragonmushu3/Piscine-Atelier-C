@@ -36,6 +36,5 @@ int main(void)
 
     free_dlist(list);
 
-
     return 0;
 }
