@@ -78,7 +78,7 @@ int dlist_insert_at(struct dlist *list, int element, size_t index)
         return -1;
 
     struct dlist_item *ptr = list->head;
-    size_t curr_index = 0
+    size_t curr_index = 0;
 
     if (index == list->size)
         return dlist_push_front(list, element);
