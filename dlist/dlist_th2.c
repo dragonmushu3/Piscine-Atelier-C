@@ -42,14 +42,14 @@ int dlist_get(struct dlist *list, size_t index)
 {
     if (!list || index > (list->size - 1))
         return -1;
-    struct dlist_item *ptr = list->tail;
+    struct dlist_item *ptr = list->head;
     size_t curr_index = 0;
     while (ptr)
     {
         if (curr_index == index)
             return ptr->data;
         curr_index++;
-        ptr = ptr->next;
+        ptr = ptr->prev;
     }
     return -1;
 }
