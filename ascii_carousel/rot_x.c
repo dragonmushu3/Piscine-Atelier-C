@@ -80,6 +80,8 @@ int get_right_letter(char c, int x)
 
 void rot_x(char *s, int x)
 {
+    if (!s)
+        return;
     for (size_t i = 0; s[i] != '\0'; i++)
     {
         if (('A' <= s[i] && s[i] <= 'Z') || ('a' <= s[i] && s[i] <= 'z'))
