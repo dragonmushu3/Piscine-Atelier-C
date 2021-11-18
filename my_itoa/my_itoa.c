@@ -47,7 +47,7 @@ char *my_itoa(int value, char *s)
     {
         s[i] = digit(value, no_digits - i) + 48;
     }
-    s[no_digits - 1] = '\0';
+    s[no_digits] = '\0';
 
     return res;
 }
