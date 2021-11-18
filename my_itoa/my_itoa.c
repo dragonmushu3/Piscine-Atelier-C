@@ -53,15 +53,3 @@ char *my_itoa(int value, char *s)
 
     return res;
 }
-
-int main(void)
-{
-    int ex = -546;
-
-    char *number = malloc(5);
-    number[4] = '\0';
-    number = my_itoa(ex, number);
-    printf("%s\n", number);
-    free(number);
-    return 0;
-}
