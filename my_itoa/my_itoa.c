@@ -1,3 +1,5 @@
+#include <limits.h>
+
 unsigned int digit(int l, int k)
 {
     if ((l <= 0) || (k <= 0))
