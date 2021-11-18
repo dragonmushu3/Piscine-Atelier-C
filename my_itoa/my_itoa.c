@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
 unsigned int digit(int l, int k)
 {
     if ((l <= 0) || (k <= 0))
@@ -50,6 +47,7 @@ char *my_itoa(int value, char *s)
     {
         s[i] = digit(value, no_digits - i) + 48;
     }
+    s[no_digits - 1] = '\0';
 
     return res;
 }
