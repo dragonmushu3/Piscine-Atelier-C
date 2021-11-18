@@ -19,7 +19,7 @@ char *rle_encode(const char *s)
     if (my_strlen(s) == 0)
     {
         char *encoded = malloc(1);
-        *encoded = '\0'; 
+        *encoded = '\0';
         return encoded;
     }
 
@@ -70,10 +70,10 @@ char *rle_decode(const char *s)
 {
     if (!s)
         return NULL;
-    if(my_strlen(s) == 0)
+    if (my_strlen(s) == 0)
     {
         char *decoded = malloc(1);
-        *decoded = '\0'; 
+        *decoded = '\0';
         return decoded;
     }
 
