@@ -1,8 +1,9 @@
-#include "my_itoa.h"
+#include <assert.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
-#include <assert.h>
+
+#include "my_itoa.h"
 
 int main(void)
 {
