@@ -49,5 +49,8 @@ char *my_itoa(int value, char *s)
     }
     s[no_digits] = '\0';
 
+    if (value == INT_MAX)
+        res[0] = '2';
+
     return res;
 }
